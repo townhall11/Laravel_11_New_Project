@@ -1,0 +1,4 @@
+php -v
+composer -V
+node -v
+npm -v
