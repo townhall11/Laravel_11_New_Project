@@ -1,4 +1,23 @@
+ Check the Version
+
 php -v
 composer -V
 node -v
 npm -v
+ 
+Create New Project
+
+composer create-project laravel/laravel your-project-name
+composer create-project laravel/laravel your-project-name "11.*"
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve (Visit: http://127.0.0.1:8000)
+
+
+Install Frontend Dependencies (optional)
+If you're using Blade + Tailwind, Vue, or React:
+npm install
+npm run dev
+
+
