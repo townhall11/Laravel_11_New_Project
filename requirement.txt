@@ -1,3 +1,4 @@
 xammp 8.2 https://www.apachefriends.org/download.html
 Composer https://getcomposer.org/download/
 Node.js	18.x (for frontend build) https://nodejs.org/en/download
+https://www.7-zip.org/download.html
