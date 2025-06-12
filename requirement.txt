@@ -2,3 +2,11 @@ xammp 8.2 https://www.apachefriends.org/download.html
 Composer https://getcomposer.org/download/
 Node.js	18.x (for frontend build) https://nodejs.org/en/download
 https://www.7-zip.org/download.html
+
+
+C:\xampp\php\php.ini (extension=zip)
+
+Go to System Environment Variables
+
+Add the path:
+C:\Program Files\7-Zip
