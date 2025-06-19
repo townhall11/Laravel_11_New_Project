@@ -5,7 +5,7 @@ composer -V
 node -v
 npm -v
  
-Create New Project
+**Create New Project
 
 composer create-project laravel/laravel your-project-name
 composer create-project laravel/laravel your-project-name "11.*"
@@ -13,6 +13,15 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan serve (Visit: http://127.0.0.1:8000)
+
+**Scaffold the Authentication System
+
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+npm install && npm run dev
+php artisan migrate
+
+
 
 
 Install Frontend Dependencies (optional)
