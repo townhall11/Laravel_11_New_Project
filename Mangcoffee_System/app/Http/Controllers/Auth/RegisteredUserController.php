@@ -30,21 +30,39 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'username'   => 'required|string|max:255|unique:users',
+            'firstname'  => 'required|string|max:255',
+            'middlename' => 'nullable|string|max:255',
+            'lastname'   => 'required|string|max:255',
+            'address'    => 'required|string|max:255',
+            'email'      => 'required|string|email|max:255|unique:users',
+            'password'   => ['required', 'confirmed', Rules\Password::defaults()],
+            'image'      => 'nullable|image|max:2048',
+            'role'       => 'required|in:user,admin',
         ]);
 
+        // Handle profile image upload
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('profile_images', 'public');
+        }
+
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'username'   => $request->username,
+            'firstname'  => $request->firstname,
+            'middlename' => $request->middlename,
+            'lastname'   => $request->lastname,
+            'address'    => $request->address,
+            'email'      => $request->email,
+            'password'   => Hash::make($request->password),
+            'role'       => $request->role,
+            'image'      => $imagePath,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect()->route('dashboard');
     }
 }
