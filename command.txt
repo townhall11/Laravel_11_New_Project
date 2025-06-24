@@ -8,7 +8,7 @@ npm -v
 **Create New Project
 
 composer create-project laravel/laravel your-project-name
-composer create-project laravel/laravel your-project-name "11.*"
+composer create-project laravel/laravel your-project-name "12.*"
 cp .env.example .env
 php artisan key:generate
 php artisan migrate:fresh

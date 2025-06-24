@@ -13,18 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-
-            $table->string('username')->unique();
-            $table->string('firstname');
-            $table->string('middlename')->nullable();
-            $table->string('lastname');
-            $table->string('address');
-            $table->string('email')->unique(); // Required for login/email verification
-            $table->timestamp('email_verified_at')->nullable(); // Email verification timestamp
-            $table->string('password'); // Required for authentication
-            $table->string('role')->default('admin', 'user'); // 'admin', 'user', etc.
-            $table->string('image')->nullable(); // path to uploaded profile image
-
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -50,8 +42,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sessions');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('sessions');
     }
 };
